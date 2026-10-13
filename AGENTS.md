@@ -17,3 +17,4 @@
 - Non-admin accounts allow one device: each browser gets a long-lived device cookie; tabs share it, so only sign-ins from a different recently-active device trigger the ban.
 - HTML rewriting only touches tag attributes, never script/style bodies — inline JSON data breaks if altered.
 - Login and study workspace share StudyBrand and scoped study-theme tokens so their presentation stays consistent without changing account administration or proxy behavior.
+- The study page shows site results only in a centered pop-up with back/forward/full-screen (no address bar); typed words show a 'No results' screen whose Results button opens DuckDuckGo — keeps the page looking like a math site.
