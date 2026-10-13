@@ -14,13 +14,92 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      account_sessions: {
+        Row: {
+          account_id: string
+          created_at: string
+          device_id: string
+          id: string
+          last_seen: string
+        }
+        Insert: {
+          account_id: string
+          created_at?: string
+          device_id: string
+          id?: string
+          last_seen?: string
+        }
+        Update: {
+          account_id?: string
+          created_at?: string
+          device_id?: string
+          id?: string
+          last_seen?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "account_sessions_account_id_fkey"
+            columns: ["account_id"]
+            isOneToOne: false
+            referencedRelation: "accounts"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      accounts: {
+        Row: {
+          all_sites: boolean
+          allowed_sites: string[]
+          banned_until: string | null
+          created_at: string
+          id: string
+          password_hash: string
+          username: string
+        }
+        Insert: {
+          all_sites?: boolean
+          allowed_sites?: string[]
+          banned_until?: string | null
+          created_at?: string
+          id?: string
+          password_hash: string
+          username: string
+        }
+        Update: {
+          all_sites?: boolean
+          allowed_sites?: string[]
+          banned_until?: string | null
+          created_at?: string
+          id?: string
+          password_hash?: string
+          username?: string
+        }
+        Relationships: []
+      }
+      app_config: {
+        Row: {
+          name: string
+          value: string
+        }
+        Insert: {
+          name: string
+          value: string
+        }
+        Update: {
+          name?: string
+          value?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      app_db: {
+        Args: { p_args?: Json; p_key: string; p_op: string }
+        Returns: Json
+      }
     }
     Enums: {
       [_ in never]: never
